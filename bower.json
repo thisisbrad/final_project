@@ -1,0 +1,25 @@
+{
+  "name": "final_project",
+  "description": "Fortins delivery managment service",
+  "main": "index.js",
+  "authors": [
+    "Chris Fortin"
+  ],
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "client/bower",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.5.6",
+    "angular-route": "~1.5.6",
+    "angular-animate": "~1.5.6",
+    "angular-resource": "~1.5.6"
+  }
+}
