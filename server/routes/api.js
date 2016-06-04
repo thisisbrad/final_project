@@ -2,11 +2,13 @@ var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 
-var Employee = require('../models/employee.js')
+var Admin = require('../models/admin.js')
+
+var admin = new Object();
 
 //authenticate register
 router.post('/register', function(req, res) {
-  Employee.register(new Employee({ email: req.body.email }),
+  Admin.register(new Admin({ email: req.body.email }),
     req.body.password, function(err, account) {
     if (err) {
       return res.status(500).json({
@@ -23,16 +25,16 @@ router.post('/register', function(req, res) {
 
 //authenticate login
 router.post('/login', function(req, res, next) {
-  passport.authenticate('local', function(err, user, info) {
+  passport.authenticate('local', function(err, admin, info) {
     if (err) {
       return next(err);
     }
-    if (!user) {
+    if (!admin) {
       return res.status(401).json({
         err: info
       });
     }
-    req.logIn(user, function(err) {
+    req.logIn(admin, function(err) {
       if (err) {
         return res.status(500).json({
           err: 'Could not log in user'
@@ -44,3 +46,6 @@ router.post('/login', function(req, res, next) {
     });
   })(req, res, next);
 });
+
+
+module.exports = router;

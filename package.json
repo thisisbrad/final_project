@@ -9,6 +9,7 @@
   "author": "Chris Fortin",
   "license": "ISC",
   "dependencies": {
+    "angular": "^1.5.6",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.1",
     "cookie-parser": "^1.4.3",

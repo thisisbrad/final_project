@@ -1,22 +1,35 @@
 fortinsApp.controller('registerCtrl',
-['$scope', '$location', 'AuthService',
-  function ($scope, $location, AuthService) {
+['$scope', '$location', '$http',
+  function ($scope, $location, $http) {
     $scope.register = function () {
       $scope.error = false;
       $scope.disabled = true;
 
-      AuthService.register($scope.registerForm.email, $scope.registerForm.password)
-        .then(function () {
-          $location.path('/');
-          $scope.disabled = false;
-          $scope.registerForm = {};
-        })
+      var email = $scope.email;
+      var password = $scope.password;
 
-        .catch(function () {
-          $scope.error = true;
-          $scope.errorMessage = "Something Broke!";
-          $scope.disabled = false;
-          $scope.registerForm = {};
-        });
+      console.log(email);
+      console.log(password);
+
+      $http.post('/api/register', {
+        email: email,
+        password: password
+      })
+
+      // $scope.register($scope.email, $scope.password)
+      //   .then(function () {
+      //     $location.path('/');
+      //     $scope.disabled = false;
+      //     $scope.register = {};
+      //     console.log('Success Man');
+      //   })
+      //
+      //   .catch(function () {
+      //     $scope.error = true;
+      //     $scope.errorMessage = "Something Broke!";
+      //     $scope.disabled = false;
+      //     $scope.register = {};
+      //     console.log('Fail Man');
+      //   });
     };
 }]);
