@@ -1,13 +1,44 @@
 // Employee models
 var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
 var passportLocalMongoose = require('passport-local-mongoose');
 
-var Admin = new Schema({
+var Schema = mongoose.Schema;
+var adminSchema = new Schema({
+  first_name: String,
+  last_name: String,
+  gender: String,
   email: String,
-  password: String
+  password: String,
+  street_address: String,
+  postal_code: String,
+  postion: String,
 });
 
-Admin.plugin(passportLocalMongoose);
+var Admin = mongoose.model('Admin', adminSchema);
 
-module.exports = mongoose.model('admins', Admin);
+
+
+module.exports = Admin;
+
+
+// // Employee models
+// var mongoose = require('mongoose');
+// //var passportLocalMongoose = require('passport-local-mongoose');
+//
+//
+// var Schema = mongoose.Schema;
+// var adminSchema = new Schema({
+//   first_name: String,
+//   last_name: String,
+//   gender: String,
+//   email: String,
+//   password: String,
+//   street_address: String,
+//   postal_code: String,
+//   postion: String,
+//   date_created: Date
+// });
+//
+// var Admin = mongoose.model('admins', Admin);
+//
+// module.exports = Admin;

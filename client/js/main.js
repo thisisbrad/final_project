@@ -16,13 +16,15 @@ fortinsApp.config(function ($routeProvider, $locationProvider) {
     .when('/home', {
       templateUrl: '../partials/home.html',
       controller: 'homeCtrl',
-      access: {restricted: false}
+      access: {restricted: true}
     })
     .when('/logout', {
       controller: 'logoutController',
       access: {restricted: true}
     })
-    .otherwise({
-      redirectTo: '/',
-    });
+    .otherwise('/');
+}).run(function($rootScope, $http){
+  $rootScope.logout = function(){
+    $http.post('/logout');
+  };
 });
